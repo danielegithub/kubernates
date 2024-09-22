@@ -20,7 +20,6 @@ Ma fortunatamente possiamo usare LoadBalancer e quindi si può riaggiornare il s
 
 ```bash
 kubectl expose deployment tomcat-deployment --type=LoadBalancer --port=8080 --target-port=8080 --name=tomcat-load-balancerservice/tomcat-load-balancer exposed
-
 ```
 Adesso se vedo l'output di con describe trovo un ip unico al quale accedere per uno dei quattro servizi
 ```bash
@@ -43,4 +42,14 @@ Session Affinity:         None
 External Traffic Policy:  Cluster
 Internal Traffic Policy:  Cluster
 Events:                   <none>
+```
+### 2. **Rollout e Update dell'immagine:**
+
+1. Posso anche fare il rollout alla versione precedente e quindi tornare alla versione con una sola replica
+```bash
+kubectl rollout status tomcat-deployment
+```
+2. Oppure posso aggiornare l'immagine di TomCat installata
+```bash
+kubectl set image deployment/tomcat-deployment tomcat=tomcat:latest
 ```
