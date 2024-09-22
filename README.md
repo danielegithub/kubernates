@@ -1,48 +1,69 @@
-# Simulazione Kubernetes con Minikube
+Ecco il file completo `README.md` che puoi copiare direttamente:
 
-## Introduzione
-Questo documento descrive una simulazione di un ambiente Kubernetes utilizzando Minikube. Verranno illustrati i passaggi per creare e gestire deployment, esporre servizi e interagire con il cluster.
+```markdown
+# SIMULAZIONE
 
-## Prerequisiti
-* **kubectl:** installato e configurato correttamente.
-* **Minikube:** installato e avviato.
+## Passaggi:
 
-## Avvio della Dashboard
-Per una visualizzazione grafica dei tuoi pod e risorse, avvia la dashboard Minikube:
-```bash
-minikube dashboard
+1. Dopo aver installato **kubectl** ed averlo avviato:
+   ```bash
+   kubectl start
+   ```
+
+2. Avvio della dashboard di Minikube:
+   ```bash
+   minikube dashboard
+   ```
+   In questo modo, nella sezione **Pods** troverai tutte le immagini scaricate.
+
+3. Scarico il classico **HelloMinikube** (deprecato):
+   ```bash
+   kubectl run hello-minikube-2 --image=kicbase/echo-server:1.0 --port=8080
+   ```
+
+4. Ora si usa:
+   ```bash
+   kubectl create deployment hello-minikube-test --image=registry.k8s.io/e2e-test-images/agnhost:2.39 --port=8080
+   ```
+
+5. Esporre il servizio all'esterno (renderlo accessibile fuori dal cluster):
+   ```bash
+   kubectl expose deployment hello-minikube-test --type=NodePort
+   ```
+
+6. Ottenere l'URL del servizio esposto:
+   ```bash
+   minikube service hello-minikube-test --url
+   ```
+
+## ALCUNI COMANDI UTILI:
+
+- Visualizzare i servizi:
+  ```bash
+  kubectl get services
+  ```
+
+- Verificare il deployment:
+  ```bash
+  kubectl get deployment hello-minikube-test
+  ```
+
+- Controllare i log di Minikube:
+  ```bash
+  minikube logs
+  ```
+
+## Lezione 1 - Come fare un proprio deployment di Tomcat da eseguire fuori
+
+1. Applicare il file di deployment:
+   ```bash
+   kubectl apply -f ./deployment.yaml
+   ```
+
+2. Esporre il deployment di Tomcat:
+   ```bash
+   kubectl expose deployment tomcat-deployment --type=NodePort
+   ```
 ```
-scarico il classico HelloMinikube ( * **deprecato)
-```bash
-kubectl run hello-minikube-2 --image=kicbase/echo-server:1.0 --port=8080
-```
 
-ora si usa
-```bash
-kubectl create deployment hello-minikube-test --image=registry.k8s.io/e2e-test-images/agnhost:2.39 --port=8080
-```
-
-## Lezione 1: Creare un Deployment di Tomcat
-
-### File `deployment.yaml`
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: tomcat-deployment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: tomcat
-  template:
-    metadata:
-      labels:
-        app:   
- tomcat
-    spec:
-      containers:
-      - name: tomcat
-        image: tomcat:latest
-        ports:
-        - containerPort: 8080 1  
+Puoi copiare e incollare tutto questo testo per utilizzarlo come file `README.md`.
