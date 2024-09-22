@@ -61,6 +61,8 @@
    ```bash
    kubectl expose deployment tomcat-deployment --type=NodePort
    ```
-```
 
-Puoi copiare e incollare tutto questo testo per utilizzarlo come file `README.md`.
+3. Creare più repliche del servizio
+  ```bash
+   kubectl scale --replicas=4 deployment/tomcat-deployment
+   ```
