@@ -12,10 +12,16 @@ Per una visualizzazione grafica dei tuoi pod e risorse, avvia la dashboard Minik
 ```bash
 minikube dashboard
 ```
-scarico il classico HelloMinikube (deprecato)
+scarico il classico HelloMinikube ( * **deprecato)
 ```bash
 kubectl run hello-minikube-2 --image=kicbase/echo-server:1.0 --port=8080
 ```
+
+ora si usa
+```bash
+kubectl create deployment hello-minikube-test --image=registry.k8s.io/e2e-test-images/agnhost:2.39 --port=8080
+```
+
 ## Lezione 1: Creare un Deployment di Tomcat
 
 ### File `deployment.yaml`
