@@ -51,7 +51,7 @@
   ```
 
 ## Lezione 1 - Come fare un proprio deployment di Tomcat da eseguire fuori
-
+### in esempio 1 è presente il file da scaricare o creare
 1. Applicare il file di deployment:
    ```bash
    kubectl apply -f ./deployment.yaml
