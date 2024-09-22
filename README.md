@@ -1,6 +1,3 @@
-Ecco il file completo `README.md` che puoi copiare direttamente:
-
-```markdown
 # SIMULAZIONE
 
 ## Passaggi:
