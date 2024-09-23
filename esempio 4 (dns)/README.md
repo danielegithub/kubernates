@@ -145,5 +145,5 @@ Visitando l'URL ottenuto, potrai visualizzare il sito WordPress appena creato.
 
 ## Conclusioni
 
-Questo semplice esempio mostra come eseguire il deploy di MySQL e WordPress su Kubernetes. Puoi espandere questo progetto aggiungendo volumi persistenti per mantenere i dati anche dopo la terminazione dei Pod o gestire la configurazione delle password in modo più sicuro utilizzando Kubernetes Secrets.
+Questo semplice esempio mostra come eseguire il deploy di MySQL e WordPress su Kubernetes. Aggiungeremo volumi persistenti per mantenere i dati anche dopo la terminazione dei Pod o gestire la configurazione delle password in modo più sicuro utilizzando Kubernetes Secrets.
 
