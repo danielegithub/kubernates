@@ -8,7 +8,8 @@ I volumi possono essere di diversi tipi, tra cui:
 In questo esempio, utilizziamo volumi locali.
 
 ### Configurare un server NFS su Minikube
-Per usare NFS come storage condiviso, dovrai configurare un server NFS. Puoi installarlo direttamente su Minikube o usare un pod separato.
+Per usare NFS come storage condiviso, bisogna configurare un server NFS. 
+Se non installato direttamente, è possibile installarlo direttamente su Minikube o usare un pod separato.
 ```bash
 minikube ssh  # entra nella VM di Minikube
 sudo apt-get update
@@ -50,7 +51,7 @@ spec:
       storage: 10Gi
 ```
 Creare più pod che usano lo stesso PVC
-Ora puoi creare due o più pod che montano lo stesso PersistentVolumeClaim. Questi pod condivideranno lo stesso volume NFS.
+Ora si possono creare due o più pod che montano lo stesso PersistentVolumeClaim. Questi pod condivideranno lo stesso volume NFS.
 ```yaml
 apiVersion: v1
 kind: Pod
