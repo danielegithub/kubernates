@@ -87,6 +87,7 @@ spec:
       claimName: nfs-pvc
 
 ```
+posso navigare tra i file e trovo il file su hostpath (di solito crea una cartella sda1) oppure fare direttamente il cat
 ```bash
 kubectl exec -it pod1 -- cat /mnt/data/hello.txt
 ```
