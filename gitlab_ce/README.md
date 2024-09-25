@@ -8,6 +8,9 @@ Assicurati di avere i seguenti strumenti installati:
 
 - Kubernetes in esecuzione (Minikube o un cluster Kubernetes reale)
 - `kubectl` installato e configurato
+- per installare minikube in VBox e non Hyper v è possibile
+  - minikube config set driver virtualbox
+  - minikube start --driver=virtualbox
 
 ## Passaggi per l'Installazione di GitLab
 
