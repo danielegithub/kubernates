@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitlab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitlab
+  template:
+    metadata:
+      labels:
+        app: gitlab
+    spec:
+      containers:
+        - name: gitlab
+          image: gitlab/gitlab-ce:latest
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+          env:
+            - name: GITLAB_OMNIBUS_CONFIG
+              value: "external_url 'http://gitlab.example.com'; gitlab_rails['gitlab_shell_ssh_port'] = 22;"
+            - name: GITLAB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gitlab-ce-initial-root-password
+                  key: password
+          volumeMounts:
+            - name: gitlab-storage
+              mountPath: /var/opt/gitlab
+      volumes:
+        - name: gitlab-storage
+          persistentVolumeClaim:
+            claimName: gitlab-volume-claim
