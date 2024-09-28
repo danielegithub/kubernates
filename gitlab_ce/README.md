@@ -30,5 +30,34 @@ Questa guida spiega come installare GitLab su Minikube utilizzando un file di co
      kubectl get secret gitlab-gitlab-initial-root-password -o jsonpath='{.data.password}' | Out-String | %{ [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_.Trim())) }
      ```
 
-## Note
-- Assicurati che i servizi siano in esecuzione e controlla eventuali errori nei log dei pod se riscontri problemi durante l'accesso.
+# Progetto Node.js su GitLab
+
+## Passaggi per la Configurazione
+
+1. **Creare il file `.gitignore`**:
+   Aggiungi `node_modules/` per escludere le dipendenze dal repository.
+
+2. **Inizializzare Git**:
+   ```bash
+   git init
+   git add .
+   git commit -m "Primo commit"
+   ```
+
+3. **Bypassare il controllo SSL**:
+   Poiché non hai un certificato valido, esegui:
+   ```bash
+   git config --global http.sslVerify false
+   git remote set-url origin http://gitlab.gitlab.local/root/nodesito.git
+   ```
+
+4. **Creare un Repository su GitLab**:
+   Aggiungi il repository con:
+   ```bash
+   git remote set-url origin https://gitlab.gitlab.local/root/nodesito.git
+   ```
+   Ora puoi fare push:
+   ```bash
+   git push -u origin master
+   ```
+
